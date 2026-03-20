@@ -1,0 +1,6 @@
+Welcome to the Socket.io Real-Time Development course! Get ready to master bi-directional communication as we build a professional-grade application from scratch using Node.js and React.
+
+For any queries, technical support, or to connect with fellow developers, join our community here:
+Community Link: https://www.facebook.com/groups/1605135160451720
+
+GitHub Repository Link: https://github.com/Apollo-Level2-Web-Dev/SocketIO_Playlist
