@@ -27,3 +27,21 @@ export const orderIdGenerator = () => {
 
   return `ORD-${years}${month}${day}-${orderNumber}`;
 };
+
+export const calculateTotal = (items) => {
+  const subTotal = items.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+
+  const tax = subTotal * 0.1;
+  const deliveryFee = 35;
+  const total = subTotal + tax + deliveryFee;
+
+  return {
+    total: Math.round((total * 100) / 100),
+    subTotal: Math.round((subTotal * 100) / 100),
+    tax: Math.round((tax * 100) / 100),
+    deliveryFee,
+  };
+};
