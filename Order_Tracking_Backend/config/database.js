@@ -1,7 +1,7 @@
 // config/database.js
 // MongoDB connection using native driver
 
-import { MongoClient } from 'mongodb';
+import { MongoClient } from "mongodb";
 
 let client = null;
 let db = null;
@@ -13,20 +13,20 @@ export const connectDB = async () => {
   try {
     // Create MongoDB client
     client = new MongoClient(process.env.MONGODB_URI);
-    
+
     // Connect to database
     await client.connect();
-    
+
     // Get database instance
     db = client.db();
-    
-    console.log('✅ MongoDB Connected Successfully');
+
+    console.log("✅ MongoDB Connected Successfully");
     console.log(`📊 Database: ${db.databaseName}`);
-    
+
     return db;
   } catch (error) {
-    console.log(error)
-    console.error('❌ MongoDB Connection Error:', error.message);
+    console.log(error);
+    console.error("❌ MongoDB Connection Error:", error.message);
     process.exit(1);
   }
 };
@@ -36,7 +36,7 @@ export const connectDB = async () => {
  */
 export const getDB = () => {
   if (!db) {
-    throw new Error('Database not initialized. Call connectDB() first!');
+    throw new Error("Database not initialized. Call connectDB() first!");
   }
   return db;
 };
@@ -54,7 +54,6 @@ export const getCollection = (collectionName) => {
 export const closeDB = async () => {
   if (client) {
     await client.close();
-    console.log('🔒 MongoDB connection closed');
+    console.log("🔒 MongoDB connection closed");
   }
 };
-
