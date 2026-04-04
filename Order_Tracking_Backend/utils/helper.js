@@ -45,3 +45,31 @@ export const calculateTotal = (items) => {
     deliveryFee,
   };
 };
+
+export const orderDocument = (orderId, orderData, amounts) => {
+  return {
+    orderId,
+    customerName: orderData.customerName.trim(),
+    customerPhone: orderData.customerPhone.trim(),
+    customerPhone: orderData.customerPhone.trim(),
+    customerAddress: orderData.customerAddress.trim(),
+    items: orderData.items,
+    subTotal: amounts.subTotal,
+    tax: amounts.tax,
+    deliveryFee: amounts.deliveryFee,
+    total: amounts.total,
+    specialNotes: orderData.specialNotes || "",
+    paymentMethod: orderData.paymentMethod || "cash",
+    peymentStatus: "pending",
+    status: "pending",
+    estimatedTime: null,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    stutasHistory: {
+      status: "pending",
+      timeStamp: new Date(),
+      by: "customer",
+      note: "Place Order",
+    },
+  };
+};
