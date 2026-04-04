@@ -8,6 +8,8 @@ import { connectDB, getCollection, closeDB } from "./config/database.js";
 import { Server } from "socket.io";
 import http from "http";
 
+import { orderHandler } from "./socket/orderHandler.js";
+
 // Load environment variables
 dotenv.config();
 
@@ -26,10 +28,12 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log(`=======A User connected - ${socket.id}=======`);
+  socket.emit("message", `Hello! Your socket ID is ${socket.id}`);
+
+  orderHandler(io, socket);
 });
 
-io.listen(3000);
+// io.listen(3000);
 
 // Middleware
 app.use(cors({ origin: process.env.CLIENT_URL || "*", credentials: true }));
