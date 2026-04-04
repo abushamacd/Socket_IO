@@ -17,3 +17,13 @@ export const validateOrder = (data) => {
 
   return { valid: true };
 };
+
+export const orderIdGenerator = () => {
+  const now = new Date();
+  const years = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  const orderNumber = Math.ceil(Math.random() * 1000);
+
+  return `ORD-${years}${month}${day}-${orderNumber}`;
+};
